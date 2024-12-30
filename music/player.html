@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Player</title>
+    <link rel="stylesheet" type="text/css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
+</head>
+
+<style> 
+
+body {
+font-family: "Jaro", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.music-player {
+	background: url(bg.jpg);
+    width: 420px;
+    padding: 15px;
+    border: 0;
+    border-radius: 5px;
+    text-align: center;
+	color: black;
+}
+
+h1 {
+    font-size: 25px;  
+    letter-spacing: 2px;
+	color: white;
+}
+
+button {
+	background-color : white;
+	border: 2px solid black;
+	border-radius: 4px;
+	padding: 5px 15px;
+	outline: black;
+	cursor: pointer;
+	}
+	
+button:hover {
+	background-color: #D7D8D2;
+	}
+
+
+</style>
+
+<body>
+    <div class="music-player">
+	    <div id="songInfo">
+        <h1>NOW PLAYING:</h1>
+		<h1><span id="currentSong"></span></h1>
+        </div>
+        <div id="player" class="button">
+		<button id="prevButton">⏪</button>	
+        <audio id="audio" controls></audio>
+        <button id="nextButton">⏩</button>
+        </div>
+	</div>
+	
+    <script>
+	const audio = document.getElementById('audio');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const currentSongDisplay = document.getElementById('currentSong');
+
+const playlist = [
+    { title: "Hysteria - Muse", src: "muse.mp3" },
+    { title: "Luther - Kendrick Lamar ft. SZA", src: "luther.mp3" },
+    { title: "Psycho - Red Velvet", src: "psycho.mp3" }
+];
+
+let currentTrackIndex = 0;
+
+function loadTrack(index) {
+    if (index >= 0 && index < playlist.length) {
+        currentTrackIndex = index;
+        audio.src = playlist[currentTrackIndex].src;
+        currentSongDisplay.textContent = playlist[currentTrackIndex].title;
+        audio.play();
+    }
+}
+
+function playNextTrack() {
+    loadTrack((currentTrackIndex + 1) % playlist.length);
+}
+
+function playPreviousTrack() {
+    loadTrack((currentTrackIndex - 1 + playlist.length) % playlist.length);
+}
+
+// Event Listeners
+nextButton.addEventListener('click', playNextTrack);
+prevButton.addEventListener('click', playPreviousTrack);
+
+// Initialize the first track
+loadTrack(0);
+
+audio.addEventListener('ended', playNextTrack);
+
+
+	</script>
+	
+</body>
+</html>
+
+
+
+
+

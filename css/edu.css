@@ -1,0 +1,54 @@
+li {
+	font-size: 20px;
+	letter-spacing: 1px;
+	}
+	
+sub {
+	font-size: 15px;
+	}
+	
+abbr {
+	font-size: 17px;
+	font-style: italic;
+	color: white;
+	}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: 0;
+  padding-right: 10px;
+}
+
+.mySlides {
+  display: none;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+.text-container {
+    background-color: #D7D8D2; 
+	opacity: 2;
+	padding-left: 10px;
+	padding-right: 9px;
+    width: fit-content;
+    border-radius: 5px;
+}	
+
+.text-container2 {
+    background-color: #D7D8D2; 
+	opacity: 2;
+	padding-left: 10px;
+	padding-right: 9px;
+	padding-bottom:10px;
+	padding-top: 10px;
+    width: fit-content;
+}	
